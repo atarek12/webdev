@@ -1,38 +1,290 @@
-.App {
-  text-align: center;
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+	scroll-behavior: smooth;
+	font-family: sans-serif;
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+	margin: 0;
+	font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif,
+		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	text-align: left;
+	background-color: #fff;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.container {
+	width: 90%;
+	margin: auto;
 }
 
-.App-link {
-  color: #61dafb;
+.cenerized {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+	outline: none !important;
+}
+
+/* Scrollbar */
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px grey;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #555;
+	border-radius: 10px;
+}
+
+/* Home */
+.Home {
+	position: relative;
+	height: 100vh;
+}
+
+.backgroundImage {
+	background-image: url('./assets/images/Home/background.jpg');
+	background-size: cover;
+	height: 100vh;
+	width: 100vw;
+	position: fixed;
+	z-index: -1;
+}
+
+.homeTitle {
+	font-size: 5vw;
+	margin-bottom: 3rem;
+	color: #f4f4f4;
+}
+
+.slogan {
+	color: #f4f4f4;
+	margin-bottom: 4rem;
+	font-size: 6vw;
+}
+
+.slogan span {
+	color: #fed136;
+}
+
+/* Navbar */
+.NavBar {
+	display: flex;
+	align-items: center;
+	min-height: fit-content;
+	position: relative;
+}
+.brandName {
+	color: #fed136;
+	font-size: 1.5rem;
+	font-family: cursive;
+	cursor: pointer;
+	margin: 2vh 0;
+	width: 85%;
+	display: inline-block;
+}
+
+.NavLinks ul {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	list-style-type: none;
+	margin-bottom: 0;
+	padding: 0;
+}
+
+.NavLinks ul li a {
+	color: #e7e8e8;
+	font-size: 1.2rem;
+	text-transform: uppercase;
+	text-decoration: none;
+	margin-left: 2vw;
+}
+
+.NavLinks ul li:hover a,
+.NavLinks ul li a.active {
+	color: #fed136;
+	border-bottom: #fed136 solid;
+	font-weight: bold;
+}
+
+.toggleBtn {
+	background-color: #fed136;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	margin-left: auto;
+}
+.btnDiv {
+	display: none;
+}
+
+@media only screen and (max-width: 776px) {
+	.btnDiv {
+		display: block;
+	}
+
+	.NavLinks ul {
+		flex-direction: column;
+		align-items: flex-start;
+		overflow: hidden;
+
+		height: 0;
+		transition: ease 0.5s height;
+	}
+	.NavLinks ul.active {
+		height: 120px;
+	}
+}
+
+/* Sections */
+.page-section {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.page-section:nth-child(odd) {
+	background-color: #fff;
+}
+.page-section:nth-child(even) {
+	background-color: #f8f9fa;
+}
+
+/* Portfolio */
+.card {
+	width: 325px;
+	height: 425px;
+	overflow: hidden;
+	margin: 5px auto;
+}
+
+.card-img-top {
+	margin-top: 13px;
+	cursor: pointer;
+	width: 100%;
+	height: 200px;
+	transition: ease all 0.3s;
+}
+
+.card-img-top:hover {
+	transform: scale(1.1);
+}
+
+.card-subtitle {
+	font-weight: bold;
+	color: #fed136;
+	font-family: cursive;
+}
+
+/*project modal  */
+
+.modal-body p {
+	white-space: pre-wrap;
+}
+
+@media (min-width: 576px) {
+	.modal-dialog {
+		max-width: 90vw !important;
+	}
+}
+
+/* About  */
+
+.my-photo img {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 15px;
+	border-radius: 30%;
+	display: inline-block;
+}
+
+.summary p {
+	text-align: justify;
+	text-justify: inter-word;
+}
+
+.skillBtn {
+	margin-bottom: 1rem;
+	width: 100%;
+}
+
+.skillBtn:hover,
+.skillBtn.active {
+	background-color: #212529 !important;
+	color: #fed136 !important;
+	font-weight: bold !important;
+}
+
+/* Contact */
+
+.contacts {
+	background-color: #212529;
+	background-image: url('./assets/images/Contact/map-image.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.whatsQRC {
+	position: absolute;
+	top: 20%;
+	right: -50%;
+	transition: ease all 0.3s;
+}
+
+.whatsQRC.active {
+	right: 5%;
+}
+
+.qrSpan {
+	width: 85px;
+	display: inline-block;
+	position: relative;
+	top: 33px;
+}
+
+.scanQR {
+	font-size: 0.8rem;
+	color: #fff;
+	cursor: pointer;
+}
+.scanQR:hover {
+	color: #fed136;
+	text-decoration: underline;
+}
+
+@media only screen and (max-width: 430px) {
+	.orSpan,
+	.scanQR {
+		display: none;
+	}
+	.qrSpan {
+		top: 0;
+		margin: 10px;
+	}
+}
+
+/* footer */
+.footer {
+	background-color: #f8f9fa;
 }
