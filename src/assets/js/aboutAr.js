@@ -1,4 +1,12 @@
+import React from 'react';
+
 const about = {
+  sectionName: 'نبذة شخصية',
+  summary: <React.Fragment>
+    <p>
+      انا اسمي احمد طارق، مهندس برمجيات متخصص في تطوير المواقع الالكترونية، تخرجت من كلية الهندسة في عام 2017، ومنذ ذلك الحين عملت بعدة مجالات اخرى مثل الانظمة المدمجة والذكاء الاصطناعي
+  </p>
+  </React.Fragment>,
   skills: [
     {
       title: 'Web Markup Languages',
@@ -12,7 +20,7 @@ const about = {
       ]
     },
     {
-      title: 'Javascript frame work: React JS',
+      title: 'Javascript Library: React JS',
       skills: [
         'React Redux',
         'React Router',

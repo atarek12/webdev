@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import data from '../assets/js/portfolio'
+import React, { useState, useContext } from 'react';
 
+import dataAr from '../assets/js/portfolioAr';
+import dataEn from '../assets/js/portfolioEn';
+import { LangContext } from './context/LangContext';
 
 import {
   Carousel,
@@ -16,7 +18,16 @@ export default function ModalCarousel(props) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
-  const items = data[props.index].carousel;
+  const Lang = useContext(LangContext);
+  let data;
+  if (Lang.isEnglish) {
+    data = dataEn;
+  }
+  else {
+    data = dataAr;
+  }
+
+  const items = data.portfolio[props.index].carousel;
 
   const next = () => {
     if (animating) return;

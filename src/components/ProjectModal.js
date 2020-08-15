@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ModalCarousel from './ModalCarousel'
 
-import data from '../assets/js/portfolio'
+import dataAr from '../assets/js/portfolioAr';
+import dataEn from '../assets/js/portfolioEn';
+import { LangContext } from './context/LangContext';
 
 
 export default function ProjectMod(props) {
@@ -13,12 +15,24 @@ export default function ProjectMod(props) {
 
   const closeBtn = <button className="close" onClick={toggle}>&times;</button>;
 
-  const modalData = data[props.index].modal;
+  const Lang = useContext(LangContext);
+  let data;
+  let textAlign;
+  if (Lang.isEnglish) {
+    data = dataEn;
+    textAlign = 'left';
+  }
+  else {
+    data = dataAr;
+    textAlign = 'right';
+  }
+
+  const modalData = data.portfolio[props.index].modal;
 
   return (
-    <div style={{ width: '80vw' }}>
-      <Button color="danger" onClick={toggle}>Read More</Button>
-      <Modal isOpen={modal} toggle={toggle} style={{ width: '80vw' }}>
+    <React.Fragment >
+      <Button color="danger" onClick={toggle}>{Lang.isEnglish ? 'Read More' : 'اقرأ المزيد'}</Button>
+      <Modal isOpen={modal} toggle={toggle} style={{ width: '80vw', margin: 'auto', textAlign: textAlign }}>
         <ModalHeader toggle={toggle} close={closeBtn}>{modalData.title}</ModalHeader>
         <ModalBody>
 
@@ -34,37 +48,10 @@ export default function ProjectMod(props) {
 
         </ModalBody>
         <ModalFooter>
-          <Button color="secondary" onClick={toggle}>Close</Button>
+          <Button color="secondary" onClick={toggle}>{Lang.isEnglish ? 'Close' : 'إلغاء'}</Button>
         </ModalFooter>
       </Modal>
-    </div>
+    </React.Fragment>
   );
 }
 
-/*
-
-          <p>
-            <strong>Technology Used:</strong><br />
-            - HTML5/CSS3        - Express JS <br />
-            - React JS            - Mongo Db <br />
-            - Node JS
-          </p>
-
-          <p>
-            <strong>Admin Features:</strong><br />
-            - Add / remove products<br />
-            - Update product details (price / quantity / description / images)<br />
-            - Notified by the number of visitors every month<br />
-            - Updating admin account
-          </p>
-
-          <p>
-            <strong>User Features:</strong><br />
-            - Browsing products by categories<br />
-            - Browsing products reviews<br />
-            - Adding product review after receiving an order<br />
-            - Creating/Updating his amazona account<br />
-            - Payinig via Paypal<br />
-          </p>
-
-*/
